@@ -1,10 +1,26 @@
+const FAIL_PERCENTAGE = 0;
+
+const shouldFail = () => {
+  const random = Math.floor(Math.random() * 100);
+
+  return random < FAIL_PERCENTAGE;
+};
+
 export const fetchPosts = () =>
   fetch("http://localhost:5000/posts").then((response) => {
+    if (shouldFail()) {
+      throw new Error("error");
+    }
+
     return response.json();
   });
 
 export const fetchPostDetails = (postId) =>
   fetch(`http://localhost:5000/posts/${postId}`).then((response) => {
+    if (shouldFail()) {
+      throw new Error("error");
+    }
+
     return response.json();
   });
 
@@ -15,7 +31,13 @@ export const createPost = (post) =>
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json());
+  }).then((response) => {
+    if (shouldFail()) {
+      throw new Error("error");
+    }
+
+    return response.json();
+  });
 
 export const updatePost = (post) =>
   fetch(`http://localhost:5000/posts/${post.id}`, {
@@ -24,7 +46,13 @@ export const updatePost = (post) =>
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json());
+  }).then((response) => {
+    if (shouldFail()) {
+      throw new Error("error");
+    }
+
+    return response.json();
+  });
 
 export const deletePost = (post) =>
   fetch(`http://localhost:5000/posts/${post.id}`, {
@@ -33,4 +61,10 @@ export const deletePost = (post) =>
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json());
+  }).then((response) => {
+    if (shouldFail()) {
+      throw new Error("error");
+    }
+
+    return response.json();
+  });
