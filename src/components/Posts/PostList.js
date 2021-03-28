@@ -14,7 +14,7 @@ const PostList = () => {
       <Link to="/posts/add">
         <button>Add new post</button>
       </Link>
-      <div className="post-list">
+      <div className="postList">
         {posts.map((post) => (
           <Link key={post.id} to={`/posts/${post.id}`}>
             {post.title}
