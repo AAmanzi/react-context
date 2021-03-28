@@ -1,8 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+import { usePosts } from "../../providers/posts/hooks";
+import Loading from "../Loading";
 
 const PostDetails = () => {
-  const post = { id: 1, title: "neki post", author: "neki autor" };
+  const params = useParams();
+  const posts = usePosts();
+
+  const post = posts.find((post) => post.id === Number(params.id));
+
+  if (!post) {
+    return <Loading />;
+  }
 
   return (
     <div>

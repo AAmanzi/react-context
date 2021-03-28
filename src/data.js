@@ -24,7 +24,7 @@ export const fetchPostDetails = (postId) =>
     return response.json();
   });
 
-export const createPost = (post) =>
+export const fetchCreatePost = (post) =>
   fetch("http://localhost:5000/posts", {
     method: "POST",
     body: JSON.stringify(post),

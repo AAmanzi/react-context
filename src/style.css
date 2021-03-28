@@ -10,6 +10,13 @@
   text-align: center;
 }
 
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}
+
 .postList {
   display: flex;
   flex-direction: column;
